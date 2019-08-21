@@ -21,5 +21,7 @@ public @interface LeetCode {
 
     boolean accepted() default false;
 
+    Level level() default Level.UNDEFINED;
 
+    enum Level {EASY, MEDIUM, HARD, UNDEFINED}
 }
