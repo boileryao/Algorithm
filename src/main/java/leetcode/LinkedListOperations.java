@@ -2,14 +2,14 @@ package leetcode;
 
 import model.ListNode;
 
+import static leetcode.LeetCode.Level.MEDIUM;
+
 /**
  * Created by boileryao on 2018/3/20.
  * Licensed under WTFPL©2018.
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-
-/* Problem #160, https://leetcode.com/problems/intersection-of-two-linked-lists */
 public class LinkedListOperations {
     /**
      * Iterate ex2 lists (just like somewhat a ring) parallel respectively
@@ -54,5 +54,27 @@ public class LinkedListOperations {
         }
 
         return pre;
+    }
+
+    @LeetCode(id = 19, problemName = "remove-nth-node-from-end-of-list", level = MEDIUM, accepted = true)
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode pioneer = head;
+        ListNode follower = head;
+        ListNode removedPre = null;
+
+        for (int i = 0; i < n; i++) {
+            if (pioneer == null) throw new IllegalArgumentException();
+            pioneer = pioneer.next;
+        }
+
+        while (pioneer != null) {
+            pioneer = pioneer.next;
+            removedPre = follower;
+            follower = follower.next;
+        }
+
+        if (follower == head) return head.next;
+        removedPre.next = removedPre.next.next;
+        return head;
     }
 }

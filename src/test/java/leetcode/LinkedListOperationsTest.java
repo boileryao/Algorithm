@@ -1,6 +1,5 @@
-package interview;
+package leetcode;
 
-import leetcode.LinkedListOperations;
 import model.ListNode;
 import org.testng.annotations.Test;
 
@@ -64,4 +63,31 @@ public class LinkedListOperationsTest {
         assertNull(reversedHead);
     }
 
+    @Test
+    public void testRemoveNthFromEnd_Atom() {
+        ListNode head = ListNode.makeList(1);
+        ListNode reversedHead = mListOperations.removeNthFromEnd(head, 1);
+        assertNull(reversedHead);
+    }
+
+    @Test
+    public void testRemoveNthFromEnd_22() {
+        ListNode head = ListNode.makeList(1, 2);
+        ListNode reversedHead = mListOperations.removeNthFromEnd(head, 2);
+        assertEquals(reversedHead.toString(), "2");
+    }
+
+    @Test
+    public void testRemoveNthFromEnd_21() {
+        ListNode head = ListNode.makeList(1, 2);
+        ListNode reversedHead = mListOperations.removeNthFromEnd(head, 1);
+        assertEquals(reversedHead.toString(), "1");
+    }
+
+    @Test
+    public void testRemoveNthFromEnd_5() {
+        ListNode head = ListNode.makeList(1, 5);
+        ListNode reversedHead = mListOperations.removeNthFromEnd(head, 2);
+        assertEquals(reversedHead.toString(), "1 2 3 5");
+    }
 }
