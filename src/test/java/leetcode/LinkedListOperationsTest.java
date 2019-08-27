@@ -90,4 +90,13 @@ public class LinkedListOperationsTest {
         ListNode reversedHead = mListOperations.removeNthFromEnd(head, 2);
         assertEquals(reversedHead.toString(), "1 2 3 5");
     }
+
+    @Test
+    public void testMergeTwoLists() {
+        ListNode a = ListNode.makeList(1, 2, 4);
+        ListNode b = ListNode.makeList(1, 3, 4);
+        ListNode actual = mListOperations.mergeTwoLists(a, b);
+        ListNode expect = ListNode.makeList(1, 1, 2, 3, 4, 4);
+        assertEquals(actual.toString(), expect.toString());
+    }
 }

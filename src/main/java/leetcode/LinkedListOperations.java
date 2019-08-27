@@ -2,6 +2,7 @@ package leetcode;
 
 import model.ListNode;
 
+import static leetcode.LeetCode.Level.EASY;
 import static leetcode.LeetCode.Level.MEDIUM;
 
 /**
@@ -76,5 +77,35 @@ public class LinkedListOperations {
         if (follower == head) return head.next;
         removedPre.next = removedPre.next.next;
         return head;
+    }
+
+    @LeetCode(id = 21, problemName = "merge-two-sorted-lists", level = EASY, accepted = true)
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null) return l1 == null ? l2 : l1;
+
+        ListNode newHead = l1.val > l2.val ? l2 : l1;
+        if (newHead == l1) l1 = l1.next;
+        else l2 = l2.next;
+
+        ListNode cursor = newHead;
+        while (l1 != null || l2 != null) {
+            if (l1 != null && l2 != null) {
+                cursor.next = l1.val > l2.val ? l2 : l1;
+                cursor = cursor.next;
+                if (cursor == l1) l1 = l1.next;
+                else l2 = l2.next;
+                continue;
+            }
+            if (l1 == null) {
+                cursor.next = l2;
+                l2 = l2.next;
+            } else {
+                cursor.next = l1;
+                l1 = l1.next;
+            }
+            cursor = cursor.next;
+        }
+
+        return newHead;
     }
 }
