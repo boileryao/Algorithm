@@ -83,19 +83,27 @@ public class LinkedListOperations {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) return l1 == null ? l2 : l1;
 
-        ListNode newHead = l1.val > l2.val ? l2 : l1;
-        if (newHead == l1) l1 = l1.next;
-        else l2 = l2.next;
+        ListNode newHead = null;
+        ListNode cursor = null;
 
-        ListNode cursor = newHead;
         while (l1 != null || l2 != null) {
             if (l1 != null && l2 != null) {
-                cursor.next = l1.val > l2.val ? l2 : l1;
-                cursor = cursor.next;
-                if (cursor == l1) l1 = l1.next;
-                else l2 = l2.next;
+                ListNode smallerNode = l1.val > l2.val ? l2 : l1;
+                if (newHead == null) {
+                    newHead = smallerNode;
+                    cursor = newHead;
+                } else {
+                    cursor.next = smallerNode;
+                    cursor = cursor.next;
+                }
+                if (cursor == l1) {
+                    l1 = l1.next;
+                } else {
+                    l2 = l2.next;
+                }
                 continue;
             }
+
             if (l1 == null) {
                 cursor.next = l2;
                 l2 = l2.next;

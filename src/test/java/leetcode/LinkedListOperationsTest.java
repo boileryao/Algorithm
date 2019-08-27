@@ -17,15 +17,15 @@ public class LinkedListOperationsTest {
 
     @Test
     public void testGetIntersectionNode_SameList() {
-        ListNode list = ListNode.makeList(1, 6);
+        ListNode list = ListNode.range(1, 6);
         ListNode interaction = mListOperations.getIntersectionNode(list, list);
         assertEquals(interaction, list);
     }
 
     @Test
     public void testGetIntersectionNode_NonInteraction() {
-        ListNode list1 = ListNode.makeList(1, 6);
-        ListNode list2 = ListNode.makeList(1, 5);
+        ListNode list1 = ListNode.range(1, 6);
+        ListNode list2 = ListNode.range(1, 5);
 
         ListNode interaction = mListOperations.getIntersectionNode(list1, list2);
         assertNull(interaction);
@@ -33,8 +33,8 @@ public class LinkedListOperationsTest {
 
     @Test
     public void testGetIntersectionNode_Interaction() {
-        ListNode list1 = ListNode.makeList(1, 6);
-        ListNode list2 = ListNode.makeList(1);
+        ListNode list1 = ListNode.range(1, 6);
+        ListNode list2 = ListNode.asList(1);
         list2.next = list1;
 
         ListNode interaction = mListOperations.getIntersectionNode(list1, list2);
@@ -43,60 +43,59 @@ public class LinkedListOperationsTest {
 
     @Test
     public void testReverseList() {
-        ListNode head = ListNode.makeList(1, 4);
-        assertEquals(head.toString(), "1 2 3 4");
+        ListNode head = ListNode.range(1, 4);
         ListNode reversedHead = mListOperations.invertLinkedList(head);
-        assertEquals(reversedHead.toString(), "4 3 2 1");
+        assertEquals(reversedHead, ListNode.asList(4, 3, 2, 1));
     }
 
     @Test
     public void testReverseList_OneElement() {
-        ListNode head = ListNode.makeList(1);
+        ListNode head = ListNode.asList(1);
         ListNode reversedHead = mListOperations.invertLinkedList(head);
-        assertEquals(reversedHead.toString(), "1");
+        assertEquals(reversedHead, ListNode.asList(1));
     }
 
     @Test
     public void testReverseList_Empty() {
-        ListNode head = ListNode.makeList();
+        ListNode head = ListNode.asList();
         ListNode reversedHead = mListOperations.invertLinkedList(head);
         assertNull(reversedHead);
     }
 
     @Test
     public void testRemoveNthFromEnd_Atom() {
-        ListNode head = ListNode.makeList(1);
+        ListNode head = ListNode.asList(1);
         ListNode reversedHead = mListOperations.removeNthFromEnd(head, 1);
         assertNull(reversedHead);
     }
 
     @Test
     public void testRemoveNthFromEnd_22() {
-        ListNode head = ListNode.makeList(1, 2);
+        ListNode head = ListNode.range(1, 2);
         ListNode reversedHead = mListOperations.removeNthFromEnd(head, 2);
-        assertEquals(reversedHead.toString(), "2");
+        assertEquals(reversedHead, ListNode.asList(2));
     }
 
     @Test
     public void testRemoveNthFromEnd_21() {
-        ListNode head = ListNode.makeList(1, 2);
+        ListNode head = ListNode.range(1, 2);
         ListNode reversedHead = mListOperations.removeNthFromEnd(head, 1);
-        assertEquals(reversedHead.toString(), "1");
+        assertEquals(reversedHead, ListNode.asList(1));
     }
 
     @Test
     public void testRemoveNthFromEnd_5() {
-        ListNode head = ListNode.makeList(1, 5);
+        ListNode head = ListNode.range(1, 5);
         ListNode reversedHead = mListOperations.removeNthFromEnd(head, 2);
-        assertEquals(reversedHead.toString(), "1 2 3 5");
+        assertEquals(reversedHead, ListNode.asList(1, 2, 3, 5));
     }
 
     @Test
     public void testMergeTwoLists() {
-        ListNode a = ListNode.makeList(1, 2, 4);
-        ListNode b = ListNode.makeList(1, 3, 4);
+        ListNode a = ListNode.asList(1, 2, 4);
+        ListNode b = ListNode.asList(1, 3, 4);
         ListNode actual = mListOperations.mergeTwoLists(a, b);
-        ListNode expect = ListNode.makeList(1, 1, 2, 3, 4, 4);
-        assertEquals(actual.toString(), expect.toString());
+        ListNode expect = ListNode.asList(1, 1, 2, 3, 4, 4);
+        assertEquals(actual, expect);
     }
 }
