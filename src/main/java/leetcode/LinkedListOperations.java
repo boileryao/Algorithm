@@ -2,8 +2,7 @@ package leetcode;
 
 import model.ListNode;
 
-import static leetcode.LeetCode.Level.EASY;
-import static leetcode.LeetCode.Level.MEDIUM;
+import static leetcode.LeetCode.Level.*;
 
 /**
  * Created by boileryao on 2018/3/20.
@@ -115,5 +114,33 @@ public class LinkedListOperations {
         }
 
         return newHead;
+    }
+
+    @LeetCode(id = 23, problemName = "merge-k-sorted-lists", level = HARD, accepted = true)
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode head = findSmallestHeading(lists);
+        if (head == null) return null;
+
+        ListNode cursor = head;
+        do {
+            cursor.next = findSmallestHeading(lists);
+            cursor = cursor.next;
+        } while (cursor != null);
+        return head;
+    }
+
+    private ListNode findSmallestHeading(ListNode[] lists) {
+        int minIdx = -1;
+        int minVal = Integer.MAX_VALUE;
+        for (int i = 0; i < lists.length; i++) {
+            if (lists[i] != null && lists[i].val < minVal) {
+                minVal = lists[i].val;
+                minIdx = i;
+            }
+        }
+        if (minIdx < 0) return null;
+        ListNode minNode = lists[minIdx];
+        lists[minIdx] = lists[minIdx].next;
+        return minNode;
     }
 }

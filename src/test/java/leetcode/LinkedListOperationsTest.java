@@ -98,4 +98,14 @@ public class LinkedListOperationsTest {
         ListNode expect = ListNode.asList(1, 1, 2, 3, 4, 4);
         assertEquals(actual, expect);
     }
+
+    @Test
+    public void testMergeKLists() {
+        ListNode actual = mListOperations.mergeKLists(new ListNode[]{
+                ListNode.asList(1, 4, 5),
+                ListNode.asList(1, 3, 4),
+                ListNode.asList(2, 6)
+        });
+        assertEquals(actual, ListNode.asList(1, 1, 2, 3, 4, 4, 5, 6));
+    }
 }
