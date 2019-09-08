@@ -69,4 +69,57 @@ public class SpiralMatrix {
 
         return result;
     }
+
+    @LeetCode(id = 59, problemName = "spiral-matrix-ii", level = LeetCode.Level.MEDIUM, accepted = true)
+    public int[][] generateMatrix(int n) {
+        int[][] matrix = new int[n][n];
+        int entryCount = n * n;
+
+        int leftEdge = 0;
+        int rightEdge = n - 1;
+        int upEdge = 0;
+        int bottomEdge = n - 1;
+
+        int direction = RIGHT;
+        int row = 0, col = 0;
+
+        int current = 1;
+        while (/*entry not filled*/current <= entryCount) {
+            switch (direction) {
+                case RIGHT:
+                    if (col == rightEdge) {
+                        direction = (direction + 1) % EDGES;
+                        upEdge++;
+                        continue;
+                    }
+                    matrix[row][col++] = current++;
+                    break;
+                case DOWN:
+                    if (row == bottomEdge) {
+                        rightEdge--;
+                        direction = (direction + 1) % EDGES;
+                        continue;
+                    }
+                    matrix[row++][col] = current++;
+                    break;
+                case LEFT:
+                    if (col == leftEdge) {
+                        bottomEdge--;
+                        direction = (direction + 1) % EDGES;
+                        continue;
+                    }
+                    matrix[row][col--] = current++;
+                    break;
+                case UP:
+                    if (row == upEdge) {
+                        leftEdge++;
+                        direction = (direction + 1) % EDGES;
+                        continue;
+                    }
+                    matrix[row--][col] = current++;
+                    break;
+            }
+        }
+        return matrix;
+    }
 }

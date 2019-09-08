@@ -35,4 +35,15 @@ public class SpiralMatrixTest {
         List<Integer> expect = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7));
         Assert.assertEquals(actual, expect);
     }
+
+    @Test
+    public void testGenerateMatrix_3() {
+        int[][] actual = solution.generateMatrix(3);
+        int[][] expect = new int[][]{
+                new int[]{1, 2, 3},
+                new int[]{8, 9, 4},
+                new int[]{7, 6, 5},
+        };
+        Assert.assertEquals(Arrays.deepToString(actual), Arrays.deepToString(expect));
+    }
 }
