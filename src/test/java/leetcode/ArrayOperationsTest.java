@@ -27,4 +27,13 @@ public class ArrayOperationsTest {
             Assert.assertEquals(nums[i], i);
         }
     }
+
+    @Test
+    public void testRemoveElement() {
+        int[] nums = {3, 2, 2, 3};
+        int newLength = solution.removeElement(nums, 3);
+        Assert.assertEquals(newLength, 2);
+        Assert.assertEquals(nums[0], 2);
+        Assert.assertEquals(nums[1], 2);
+    }
 }
