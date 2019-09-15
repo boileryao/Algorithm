@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,8 +14,62 @@ public class WordSearch {
     private static final int MASK_LEFT = 0b0100;
     private static final int MASK_RIGHT = 0b1000;
 
+    //******************** Clean Implementation -- Start
+    private boolean[][] marked;
+    private int[][] direction = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
+    private int m;  // row count
+    private int n;  // col count
+    private String word;
+    private char[][] board;
+
     @LeetCode(id = 79, problemName = "word-search", level = LeetCode.Level.MEDIUM, accepted = true)
     public boolean exist(char[][] board, String word) {
+        m = board.length;
+        if (m == 0) {
+            return false;
+        }
+        n = board[0].length;
+        marked = new boolean[m][n];
+        this.word = word;
+        this.board = board;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dfs(i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean dfs(int i, int j, int start) {
+        if (start == word.length() - 1) {
+            return board[i][j] == word.charAt(start);
+        }
+        if (board[i][j] == word.charAt(start)) {
+            marked[i][j] = true;
+            for (int k = 0; k < 4; k++) {
+                int newX = i + direction[k][0];
+                int newY = j + direction[k][1];
+                if (inArea(newX, newY) && !marked[newX][newY]) {
+                    if (dfs(newX, newY, start + 1)) {
+                        return true;
+                    }
+                }
+            }
+            marked[i][j] = false;
+        }
+        return false;
+    }
+
+    private boolean inArea(int x, int y) {
+        return x >= 0 && x < m && y >= 0 && y < n;
+    }
+    //******************** Clean Implementation -- End
+
+    @LeetCode(id = 79, problemName = "word-search", level = LeetCode.Level.MEDIUM, accepted = true)
+    public boolean _exist(char[][] board, String word) {
         if (board == null || board.length == 0 || board[0].length == 0) {
             return false;
         }
@@ -23,19 +78,17 @@ public class WordSearch {
         }
 
         List<Position> walkHistory = new ArrayList<>(word.length());
-        List<Integer> unreachableFlags = new ArrayList<>(word.length());
+        int[] unreachableFlags = new int[word.length()];
 
         Position lastHeadingPosition = null;
         while ((lastHeadingPosition = findNext(board, word.charAt(0), lastHeadingPosition)) != null) {
             walkHistory.clear();
-            unreachableFlags.clear();
-            for (int i = 0; i < word.length(); i++) {
-                unreachableFlags.add(0);
-            }
+            Arrays.fill(unreachableFlags, 0);
+
             walkHistory.add(lastHeadingPosition);
             for (int i = 1; i < word.length(); i++) {
                 Position last = walkHistory.get(walkHistory.size() - 1);
-                int flag = unreachableFlags.get(i);
+                int flag = unreachableFlags[i];
                 char ch = word.charAt(i);
 
                 // Walk Down
@@ -78,18 +131,17 @@ public class WordSearch {
                     }
                 }
 
-                unreachableFlags.set(i, flag);
+                unreachableFlags[i] = flag;
 
                 if (flag == 0b1111) {  // no match, do backtrack
                     if (walkHistory.size() <= 1) {
-                        break; // fail on this start point
-                    } else {
-                        Position from = walkHistory.get(walkHistory.size() - 2);
-                        unreachableFlags.set(i - 1, unreachableFlags.get(i - 1) | positionOf(from, last));
-                        walkHistory.remove(last);
-                        unreachableFlags.set(i, 0);
-                        i -= 2;
+                        break; // fail on this round of trial
                     }
+                    Position from = walkHistory.get(walkHistory.size() - 2);
+                    unreachableFlags[i - 1] = unreachableFlags[i - 1] | positionOf(from, last);
+                    walkHistory.remove(last);
+                    unreachableFlags[i] = 0;
+                    i -= 2;
                 }
             }
             if (walkHistory.size() == word.length()) {
