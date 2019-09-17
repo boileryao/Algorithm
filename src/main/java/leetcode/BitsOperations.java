@@ -7,7 +7,7 @@ import static leetcode.LeetCode.Level.EASY;
  * Licensed under WTFPL©2019.
  */
 public class BitsOperations {
-    @LeetCode(id = 136, problemName = "single-number", level = EASY, accepted = true)
+    @LeetCode(id = 136, problemName = "single-number", level = EASY)
     public int singleNumber(int[] nums) {
         int ops = 0;
         for (int num : nums) {

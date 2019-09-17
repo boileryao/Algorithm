@@ -5,7 +5,7 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class Utf8Validation {
-    @LeetCode(id = 393, problemName = "utf-8-validation", accepted = true)
+    @LeetCode(id = 393, problemName = "utf-8-validation", level = LeetCode.Level.MEDIUM)
     public boolean validUtf8(int[] data) {
         int remainingHalves = 0;
         for (int bt : data) {

@@ -7,7 +7,7 @@ import static leetcode.LeetCode.Level.MEDIUM;
  * Licensed under WTFPL©2019.
  */
 public class ContainerWithMostWater {
-    @LeetCode(id = 11, problemName = "container-with-most-water", level = MEDIUM, accepted = true)
+    @LeetCode(id = 11, problemName = "container-with-most-water", level = MEDIUM)
     public int maxArea(int[] height) {
         if (height.length < 2) throw new IllegalArgumentException("require at least 2 elements");
 

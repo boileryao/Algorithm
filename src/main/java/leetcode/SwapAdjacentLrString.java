@@ -8,8 +8,6 @@ import java.util.Objects;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-
-/* Problem #777, https://leetcode.com/problems/swap-adjacent-in-lr-string */
 public class SwapAdjacentLrString {
     public static void main(String[] args) {
         String start = "RXXLRXRXL";
@@ -17,6 +15,7 @@ public class SwapAdjacentLrString {
         System.out.println(canTransform(start, end));
     }
 
+    @LeetCode(id = 777, problemName = "swap-adjacent-in-lr-string", level = LeetCode.Level.MEDIUM)
     private static boolean canTransform(String start, String end) {
         if (start.length() != end.length()) throw new IllegalArgumentException("start and end must have same length");
 

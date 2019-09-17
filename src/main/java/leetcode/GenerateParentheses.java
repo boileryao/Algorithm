@@ -13,7 +13,7 @@ public class GenerateParentheses {
     private List<String> result = new ArrayList<>();
     private int parenthesis;
 
-    @LeetCode(id = 22, problemName = "generate-parentheses", level = MEDIUM, accepted = true)
+    @LeetCode(id = 22, problemName = "generate-parentheses", level = MEDIUM)
     public List<String> generateParenthesis(int n) {
         parenthesis = n;
         backtrack("", 0, 0);

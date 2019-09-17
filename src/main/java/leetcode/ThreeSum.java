@@ -8,28 +8,10 @@ import java.util.*;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-
-/* Problem #15, https://leetcode.com/problems/3sum */
+@SuppressWarnings("unused")
 public class ThreeSum {
     public static void main(String[] args) {
         ThreeSum threeSum = new ThreeSum();
-
-//        for (List<Integer> integers : threeSum.threeSum(new int[]{})) {
-//            System.out.println(new Triplets(integers.get(0), integers.get(1)));
-//        }
-//
-//        for (List<Integer> integers : threeSum.threeSum(new int[]{-1, 0, 1, 2, -1, -4})) {
-//            System.out.println(new Triplets(integers.get(0), integers.get(1)));
-//        }
-//
-//        for (List<Integer> integers : threeSum.threeSum(new int[]{-2, -3, 0, 0, -2})) {
-//            System.out.println(new Triplets(integers.get(0), integers.get(1)));
-//        }
-//
-//        for (List<Integer> integers : threeSum.threeSum(new int[]{0, 0, 0})) {
-//            System.out.println(new Triplets(integers.get(0), integers.get(1)));
-//        }
-
         int[] nums = new int[3000];
         for (int i = 0; i < 3000; i++) {
             nums[i] = i * (i - 20);
@@ -41,6 +23,7 @@ public class ThreeSum {
         System.out.format("%d ms used\n", System.currentTimeMillis() - beginTime);
     }
 
+    @LeetCode(id = 15, problemName = "3sum", level = LeetCode.Level.MEDIUM)
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new LinkedList<>();
@@ -52,7 +35,8 @@ public class ThreeSum {
                         res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
                         while (lo < hi && nums[lo] == nums[lo + 1]) lo++;
                         while (lo < hi && nums[hi] == nums[hi - 1]) hi--;
-                        lo++; hi--;
+                        lo++;
+                        hi--;
                     } else if (nums[lo] + nums[hi] < sum) {
                         // improve: skip duplicates
                         while (lo < hi && nums[lo] == nums[lo + 1]) lo++;

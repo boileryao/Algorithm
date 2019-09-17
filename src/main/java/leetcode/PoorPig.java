@@ -2,7 +2,6 @@ package leetcode;
 
 /**
  * Created by boileryao on 2017/2/22.
- * No.458
  */
 public class PoorPig {
     public static void main(String[] args) {
@@ -11,6 +10,7 @@ public class PoorPig {
         System.out.println(poorPig.poorPigs(1000, 15, 60));
     }
 
+    @LeetCode(id = 458, problemName = "poor-pigs", level = LeetCode.Level.HARD)
     private int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
         int pigs = 1;
         int base = minutesToTest / minutesToDie + 1;

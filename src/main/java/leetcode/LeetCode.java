@@ -12,14 +12,14 @@ import java.lang.annotation.Target;
  * May you a better man and do no evil.
  */
 
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
 @Retention(RetentionPolicy.SOURCE)
 public @interface LeetCode {
     int id();
 
     String problemName();
 
-    boolean accepted() default false;
+    boolean accepted() default true;
 
     Level level() default Level.UNDEFINED;
 

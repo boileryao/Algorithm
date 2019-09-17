@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Deque;
 
 /**
@@ -10,15 +9,9 @@ import java.util.Deque;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-
-/* Problem #239, https://leetcode.com/problems/sliding-window-maximum */
+@SuppressWarnings("unused")
 public class SlidingWindowMaximum {
-    public static void main(String[] args) {
-        int[] maxSlidingWindow = benchMark(new int[]{}, 3);
-        System.out.println(Arrays.toString(maxSlidingWindow));
-    }
-
-    @LeetCode(id = 239, problemName = "sliding-window-maximum", accepted = true)
+    @LeetCode(id = 239, problemName = "sliding-window-maximum", level = LeetCode.Level.HARD)
     private static int[] maxSlidingWindow(int[] nums, int k) {
         int[] msw = new int[nums.length - k + 1];  // max sliding window
 
@@ -44,6 +37,7 @@ public class SlidingWindowMaximum {
         return msw;
     }
 
+    @LeetCode(id = 239, problemName = "sliding-window-maximum", level = LeetCode.Level.HARD)
     private static int[] benchMark(final int[] nums, final int k) {
         if (nums == null || nums.length == 0 || k > nums.length) return new int[0];
         int[] maxLeft = new int[nums.length];

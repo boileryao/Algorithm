@@ -5,7 +5,7 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class FirstMissingPositive {
-    @LeetCode(id = 41, problemName = "first-missing-positive", level = LeetCode.Level.HARD, accepted = true)
+    @LeetCode(id = 41, problemName = "first-missing-positive", level = LeetCode.Level.HARD)
     public int firstMissingPositive(int[] nums) {
         if (nums == null || nums.length == 0) return 1;
 

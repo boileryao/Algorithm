@@ -12,7 +12,7 @@ public class Permutations {
      *
      * @param nums, generate nums next permutation
      */
-    @LeetCode(id = 31, problemName = "next-permutation", level = MEDIUM, accepted = true)
+    @LeetCode(id = 31, problemName = "next-permutation", level = MEDIUM)
     public void nextPermutation(int[] nums) {
         if (nums == null || nums.length < 2) return;
 

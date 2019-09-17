@@ -11,7 +11,7 @@ import java.util.List;
  * May you a better man and do no evil.
  */
 public class MinimumIndexSumOfTwoLists {
-    @LeetCode(id = 599, problemName = "minimum-index-sum-of-ex2-lists")
+    @LeetCode(id = 599, problemName = "minimum-index-sum-of-ex2-lists", level = LeetCode.Level.EASY)
     public static String[] findRestaurant(String[] list1, String[] list2) {
         Hashtable<String, Integer> hashtable = new Hashtable<>();
         for (int i = 0; i < list1.length; i++) {

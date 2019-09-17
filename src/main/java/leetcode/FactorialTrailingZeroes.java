@@ -16,7 +16,7 @@ public class FactorialTrailingZeroes {
         assert trailingZeroes(100) == 25;
     }
 
-    @LeetCode(id = 172, problemName = "Factorial Trailing Zeroes", accepted = true)
+    @LeetCode(id = 172, problemName = "factorial-trailing-zeroes", level = LeetCode.Level.EASY)
     public static int trailingZeroes(int n) {
         int tmp = n;
         int zeroes = 0;

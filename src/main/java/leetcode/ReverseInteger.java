@@ -6,8 +6,6 @@ package leetcode;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-
-/* Problem #7, https://leetcode.com/problems/reverse-integer */
 public class ReverseInteger {
     public static void main(String[] args) {
         for (int num : new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE / 10, Integer.MIN_VALUE, Integer.MIN_VALUE / 10,
@@ -16,7 +14,7 @@ public class ReverseInteger {
         }
     }
 
-    @LeetCode(id = 7, problemName = "reverse-integer", accepted = true)
+    @LeetCode(id = 7, problemName = "reverse-integer", level = LeetCode.Level.EASY)
     private static int reverse(int x) {
         int tmp = x;
         int reversed = 0;

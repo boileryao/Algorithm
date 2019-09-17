@@ -7,7 +7,7 @@ import java.util.*;
  * Licensed under WTFPL©2019.
  */
 public class WordBreak {
-    @LeetCode(id = 139, problemName = "word-break", level = LeetCode.Level.MEDIUM, accepted = true)
+    @LeetCode(id = 139, problemName = "word-break", level = LeetCode.Level.MEDIUM)
     public boolean wordBreak(String s, List<String> wordDict) {
         if (wordDict.isEmpty()) {
             return false;

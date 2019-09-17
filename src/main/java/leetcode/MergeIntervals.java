@@ -11,7 +11,7 @@ import static leetcode.LeetCode.Level.MEDIUM;
  * Licensed under WTFPL©2019.
  */
 public class MergeIntervals {
-    @LeetCode(id = 56, problemName = "merge-intervals", level = MEDIUM, accepted = true)
+    @LeetCode(id = 56, problemName = "merge-intervals", level = MEDIUM)
     public int[][] merge(int[][] intervals) {
         Map<Integer, int[]> reflection = new HashMap<>();
         for (int[] interval : intervals) {

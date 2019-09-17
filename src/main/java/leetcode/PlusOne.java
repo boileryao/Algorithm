@@ -5,7 +5,7 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class PlusOne {
-    @LeetCode(id = 66, problemName = "plus-one", level = LeetCode.Level.EASY, accepted = true)
+    @LeetCode(id = 66, problemName = "plus-one", level = LeetCode.Level.EASY)
     public int[] plusOne(int[] digits) {
         boolean allNines = true;
         for (int digit : digits) {

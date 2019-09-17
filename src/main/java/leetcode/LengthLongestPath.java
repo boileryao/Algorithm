@@ -5,14 +5,6 @@ import java.util.Deque;
 
 /**
  * Created by boileryao on 2017/2/22.
- * No.388
- * dir
- * subdir1
- * file1.ext
- * subsubdir1
- * subdir2
- * subsubdir2
- * file2.ext
  */
 public class LengthLongestPath {
     public static void main(String[] args) {
@@ -24,6 +16,7 @@ public class LengthLongestPath {
     }
 
     @SuppressWarnings("ConstantConditions")
+    @LeetCode(id = 388, problemName = "longest-absolute-file-path", level = LeetCode.Level.MEDIUM)
     public int lengthLongestPath(String input) {
         Deque<Integer> stack = new ArrayDeque<>();
         stack.push(0); // "dummy" length

@@ -23,7 +23,7 @@ public class LetterCombinationsOfPhoneNumber {
         phoneKeys.put('9', "wxyz");
     }
 
-    @LeetCode(id = 17, problemName = "letter-combinations-of-a-phone-number", level = MEDIUM, accepted = true)
+    @LeetCode(id = 17, problemName = "letter-combinations-of-a-phone-number", level = MEDIUM)
     public List<String> letterCombinations(String digits) {
         if (digits == null || digits.isEmpty()) return Collections.emptyList();
         result = new ArrayList<>(calcResultListSize(digits));

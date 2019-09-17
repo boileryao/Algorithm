@@ -7,7 +7,7 @@ import static leetcode.LeetCode.Level.EASY;
  * Check if the given number is a power of ex2.
  */
 public class PowerOfN {
-    @LeetCode(id = 231, problemName = "power-of-two", level = EASY, accepted = true)
+    @LeetCode(id = 231, problemName = "power-of-two", level = EASY)
     public boolean isPowerOfTwo(int n) {
         if (n == 1) return true;
         if (n < 1) return false;
@@ -15,7 +15,7 @@ public class PowerOfN {
         return (1 << 31) % n == 0;
     }
 
-    @LeetCode(id = 342, problemName = "power-of-four", level = EASY, accepted = true)
+    @LeetCode(id = 342, problemName = "power-of-four", level = EASY)
     public boolean isPowerOfFour(int num) {
         if (num < 1) return false;
         int hits = 0;

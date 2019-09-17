@@ -8,7 +8,7 @@ public class RomanToInteger {
     private char[] romans = new char[]{'M', 'D', 'C', 'L', 'X', 'V', 'I'};
     private int[] digits = new int[]{1000, 500, 100, 50, 10, 5, 1};
 
-    @LeetCode(id = 13, problemName = "roman-to-integer", level = LeetCode.Level.EASY, accepted = true)
+    @LeetCode(id = 13, problemName = "roman-to-integer", level = LeetCode.Level.EASY)
     public int romanToInt(String s) {
         if (s == null || s.isEmpty()) return 0;
 

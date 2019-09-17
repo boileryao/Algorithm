@@ -14,7 +14,7 @@ public class MissingRanges {
         missingRanges.forEach(System.out::println);
     }
 
-    @LeetCode(id = 163, problemName = "MissingRanges", accepted = true)
+    @LeetCode(id = 163, problemName = "MissingRanges", level = LeetCode.Level.MEDIUM)
     public static List<String> missingRanges(int[] arr, int lower, int upper) {
         List<String> missingRanges = new LinkedList<>();
         if (arr.length == 0) {
@@ -30,7 +30,8 @@ public class MissingRanges {
 
         for (int num : arr) {
             if (num == lowIter) {
-                lowIter++; continue;
+                lowIter++;
+                continue;
             }
 
             if (num >= upper) {

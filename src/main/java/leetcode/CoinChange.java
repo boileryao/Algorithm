@@ -22,7 +22,7 @@ public class CoinChange {
         assert coinChange(new int[]{2}, 3) == -1;
     }
 
-    @LeetCode(id = 322, problemName = "Coin Change")
+    @LeetCode(id = 322, problemName = "coin-change", level = LeetCode.Level.MEDIUM)
     public static int coinChange(int[] coins, int amount) {
         int[] mins = new int[amount + 1];  // all cells are 0
         for (int amt = 1; amt <= amount; amt++) {

@@ -9,12 +9,11 @@ import java.util.List;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-
-/* Problem #155, https://leetcode.com/problems/min-stack */
 public class MinStack {
     private int min = Integer.MAX_VALUE;
     private List<Integer> list;
 
+    @LeetCode(id = 155, problemName = "min-stack", level = LeetCode.Level.EASY)
     public MinStack() {
         list = new LinkedList<>();
     }

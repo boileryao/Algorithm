@@ -5,7 +5,7 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class JumpGame {
-    @LeetCode(id = 55, problemName = "jump-game", level = LeetCode.Level.MEDIUM, accepted = true)
+    @LeetCode(id = 55, problemName = "jump-game", level = LeetCode.Level.MEDIUM)
     public boolean canJump(int[] nums) {
         if (nums.length <= 1) return true;
         for (int i = 0; i < nums.length - 1; i++) {

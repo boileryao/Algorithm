@@ -7,7 +7,7 @@ import static leetcode.LeetCode.Level.EASY;
  * Licensed under WTFPL©2019.
  */
 public class ArrayOperations {
-    @LeetCode(id = 26, problemName = "remove-duplicates-from-sorted-array", level = EASY, accepted = true)
+    @LeetCode(id = 26, problemName = "remove-duplicates-from-sorted-array", level = EASY)
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -26,7 +26,7 @@ public class ArrayOperations {
         return uniqueCount;
     }
 
-    @LeetCode(id = 27, problemName = "remove-element", level = EASY, accepted = true)
+    @LeetCode(id = 27, problemName = "remove-element", level = EASY)
     public int removeElement(int[] nums, int val) {
         int i = 0;
         for (int j = 0; j < nums.length; j++) {

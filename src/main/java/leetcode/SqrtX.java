@@ -5,7 +5,7 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class SqrtX {
-    @LeetCode(id = 69, problemName = "sqrtx", accepted = true)
+    @LeetCode(id = 69, problemName = "sqrtx", level = LeetCode.Level.EASY)
     public int mySqrt(int x) {
         int low = 0;
         int high = Math.min(x, 46340);

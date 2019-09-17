@@ -9,8 +9,7 @@ import static leetcode.LeetCode.Level.MEDIUM;
  * Licensed under WTFPL©2019.
  */
 public class BinarySearches {
-    @LeetCode(id = 34, problemName = "find-first-and-last-position-of-element-in-sorted-array",
-            level = MEDIUM, accepted = true)
+    @LeetCode(id = 34, problemName = "find-first-and-last-position-of-element-in-sorted-array", level = MEDIUM)
     public int[] searchRange(int[] nums, int target) {
         int someIdx = Arrays.binarySearch(nums, target);
         if (someIdx < 0) return new int[]{-1, -1};

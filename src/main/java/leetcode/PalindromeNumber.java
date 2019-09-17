@@ -5,7 +5,7 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class PalindromeNumber {
-    @LeetCode(id = 9, problemName = "palindrome-number", accepted = true, level = LeetCode.Level.EASY)
+    @LeetCode(id = 9, problemName = "palindrome-number", level = LeetCode.Level.EASY)
     public boolean isPalindrome(int x) {
         if (x < 0 || (x % 10 == 0 && x != 0)) return false;
 

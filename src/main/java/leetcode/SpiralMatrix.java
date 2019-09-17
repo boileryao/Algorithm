@@ -15,7 +15,7 @@ public class SpiralMatrix {
     private static final int UP = 3;
     private static final int EDGES = 4;
 
-    @LeetCode(id = 54, problemName = "spiral-matrix", level = LeetCode.Level.MEDIUM, accepted = true)
+    @LeetCode(id = 54, problemName = "spiral-matrix", level = LeetCode.Level.MEDIUM)
     public List<Integer> spiralOrder(int[][] matrix) {
         if (matrix == null || matrix.length == 0) return Collections.emptyList();
 
@@ -70,7 +70,7 @@ public class SpiralMatrix {
         return result;
     }
 
-    @LeetCode(id = 59, problemName = "spiral-matrix-ii", level = LeetCode.Level.MEDIUM, accepted = true)
+    @LeetCode(id = 59, problemName = "spiral-matrix-ii", level = LeetCode.Level.MEDIUM)
     public int[][] generateMatrix(int n) {
         int[][] matrix = new int[n][n];
         int entryCount = n * n;

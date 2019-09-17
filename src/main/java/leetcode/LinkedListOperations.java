@@ -23,7 +23,7 @@ public class LinkedListOperations {
      *
      * @return null or interaction node, if any.
      */
-    @LeetCode(id = 160, problemName = "intersection-of-ex2-linked-lists", accepted = true)
+    @LeetCode(id = 160, problemName = "intersection-of-ex2-linked-lists", level = EASY)
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) return null;
 
@@ -38,7 +38,7 @@ public class LinkedListOperations {
         return a;
     }
 
-    @LeetCode(id = 206, problemName = "reverse-linked-list", accepted = true)
+    @LeetCode(id = 206, problemName = "reverse-linked-list", level = EASY)
     public ListNode invertLinkedList(ListNode head) {
         if (head == null) return null;
 
@@ -56,7 +56,7 @@ public class LinkedListOperations {
         return pre;
     }
 
-    @LeetCode(id = 19, problemName = "remove-nth-node-from-end-of-list", level = MEDIUM, accepted = true)
+    @LeetCode(id = 19, problemName = "remove-nth-node-from-end-of-list", level = MEDIUM)
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode pioneer = head;
         ListNode follower = head;
@@ -78,7 +78,7 @@ public class LinkedListOperations {
         return head;
     }
 
-    @LeetCode(id = 21, problemName = "merge-two-sorted-lists", level = EASY, accepted = true)
+    @LeetCode(id = 21, problemName = "merge-two-sorted-lists", level = EASY)
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) return l1 == null ? l2 : l1;
 
@@ -116,7 +116,7 @@ public class LinkedListOperations {
         return newHead;
     }
 
-    @LeetCode(id = 23, problemName = "merge-k-sorted-lists", level = HARD, accepted = true)
+    @LeetCode(id = 23, problemName = "merge-k-sorted-lists", level = HARD)
     public ListNode mergeKLists(ListNode[] lists) {
         ListNode head = findSmallestHeading(lists);
         if (head == null) return null;

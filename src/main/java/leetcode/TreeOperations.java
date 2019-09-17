@@ -11,9 +11,9 @@ import static leetcode.LeetCode.Level.MEDIUM;
  * Created by boileryao on 8/29/2019.
  * Licensed under WTFPL©2019.
  */
+@SuppressWarnings("unused")
 public class TreeOperations {
-
-    @LeetCode(id = 94, problemName = "binary-tree-inorder-traversal", level = MEDIUM, accepted = true)
+    @LeetCode(id = 94, problemName = "binary-tree-inorder-traversal", level = MEDIUM)
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         midOrderIterate(result, root);

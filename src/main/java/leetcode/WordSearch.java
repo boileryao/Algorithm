@@ -22,7 +22,7 @@ public class WordSearch {
     private String word;
     private char[][] board;
 
-    @LeetCode(id = 79, problemName = "word-search", level = LeetCode.Level.MEDIUM, accepted = true)
+    @LeetCode(id = 79, problemName = "word-search", level = LeetCode.Level.MEDIUM)
     public boolean exist(char[][] board, String word) {
         m = board.length;
         if (m == 0) {
@@ -68,7 +68,7 @@ public class WordSearch {
     }
     //******************** Clean Implementation -- End
 
-    @LeetCode(id = 79, problemName = "word-search", level = LeetCode.Level.MEDIUM, accepted = true)
+    @LeetCode(id = 79, problemName = "word-search", level = LeetCode.Level.MEDIUM)
     public boolean _exist(char[][] board, String word) {
         if (board == null || board.length == 0 || board[0].length == 0) {
             return false;
