@@ -36,4 +36,11 @@ public class ArrayOperationsTest {
         Assert.assertEquals(nums[0], 2);
         Assert.assertEquals(nums[1], 2);
     }
+
+    @Test
+    public void testMaxSubArray() {
+        int[] nums = {-2, 11, -4, 13, -5, -2};
+        int actual = solution.maxSubArray(nums);
+        Assert.assertEquals(actual, 20);
+    }
 }
