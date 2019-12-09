@@ -20,4 +20,28 @@ public class StringOperations {
         }
         return sb.toString();
     }
+
+    /**
+     * 给定两个单词 word1 和 word2，找到使得 word1 和 word2 相同所需的最小步数，每步可以删除任意一个字符串中的一个字符。
+     */
+    @LeetCode(id = 583, problemName = "delete-operation-for-two-strings", level = LeetCode.Level.MEDIUM)
+    public int minDistance(String word1, String word2) {
+        int lcs = 0;
+        int[][] lcsCache = new int[word1.length()][word2.length()];
+        for (int i = 0; i < word1.length(); i++) {
+            for (int j = 0; j < word2.length(); j++) {
+                int top = (i != 0) ? lcsCache[i - 1][j] : 0;
+                int left = (j != 0) ? lcsCache[i][j - 1] : 0;
+                int topLeft = (i != 0 && j != 0) ? lcsCache[i - 1][j - 1] : 0;
+                lcsCache[i][j] = Math.max(top, left);
+                if (word1.charAt(i) == word2.charAt(j)) {
+                    lcsCache[i][j] = Math.max(topLeft + 1, lcsCache[i][j]);
+                    if (lcsCache[i][j] > lcs) {
+                        lcs = lcsCache[i][j];
+                    }
+                }
+            }
+        }
+        return word1.length() + word2.length() - 2 * lcs;
+    }
 }

@@ -33,4 +33,34 @@ public class StringOperationsTest {
         String actual = solution.longestCommonPrefix(new String[]{"aaa", "aa", "aaa"});
         Assert.assertEquals(actual, "aa");
     }
+
+    @Test
+    public void testMinDistance_Case1() {
+        int actual = solution.minDistance("sea", "eat");
+        Assert.assertEquals(actual, 2);
+    }
+
+    @Test
+    public void testMinDistance_SameChar() {
+        int actual = solution.minDistance("ss", "sssss");
+        Assert.assertEquals(actual, 3);
+    }
+
+    @Test
+    public void testMinDistance_OneBlank() {
+        int actual = solution.minDistance("ss", "");
+        Assert.assertEquals(actual, 2);
+    }
+
+    @Test
+    public void testMinDistance_Fail1() {
+        int actual = solution.minDistance("food", "money");
+        Assert.assertEquals(actual, 7);
+    }
+
+    @Test
+    public void testMinDistance_Fail2() {
+        int actual = solution.minDistance("park", "spake");
+        Assert.assertEquals(actual, 3);
+    }
 }
