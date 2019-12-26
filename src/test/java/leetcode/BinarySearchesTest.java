@@ -1,6 +1,11 @@
 package leetcode;
 
+import kotlin.collections.CollectionsKt;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
@@ -35,5 +40,26 @@ public class BinarySearchesTest {
     @Test
     public void testSearchRange_Fail1() {
         assertEquals(solution.searchRange(new int[]{2, 2}, 2), new int[]{0, 1});
+    }
+
+    @Test
+    public void testSearchInsert() {
+        // Run test 100 times, compared with std lib
+        for (int i = 0; i < 100; i++) {
+            // Generate ordered array with max size of 10, avg size 5
+            List<Integer> arrayList = new ArrayList<>();
+            for (int j = 0; j < 10; j++) {
+                if (Math.random() > 0.5) {
+                    arrayList.add(j);
+                }
+            }
+            int target = (int) (10 * Math.random());
+            int[] nums = CollectionsKt.toIntArray(arrayList);
+            int expect = Arrays.binarySearch(nums, target);
+            // std lib returns (-insertPosition - 1) if not found, adjust it here
+            if (expect < 0) expect = -1 * expect - 1;
+            int actual = solution.searchInsert(nums, target);
+            assertEquals(actual, expect, String.format("Finding %d in %s\n", target, Arrays.toString(nums)));
+        }
     }
 }
