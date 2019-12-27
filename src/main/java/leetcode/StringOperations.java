@@ -22,6 +22,23 @@ public class StringOperations {
     }
 
     /**
+     * 给定一个仅包含大小写字母和空格 ' ' 的字符串，返回其最后一个单词的长度。
+     * 如果不存在最后一个单词，请返回 0。
+     */
+    @LeetCode(id = 58, problemName = "length-of-last-word", level = LeetCode.Level.EASY)
+    public int lengthOfLastWord(String s) {
+        int lastWordLen = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == ' ') {
+                if (lastWordLen > 0) break;
+            } else {
+                lastWordLen++;
+            }
+        }
+        return lastWordLen;
+    }
+
+    /**
      * 给定两个单词 word1 和 word2，找到使得 word1 和 word2 相同所需的最小步数，每步可以删除任意一个字符串中的一个字符。
      */
     @LeetCode(id = 583, problemName = "delete-operation-for-two-strings", level = LeetCode.Level.MEDIUM)

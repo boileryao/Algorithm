@@ -63,4 +63,11 @@ public class StringOperationsTest {
         int actual = solution.minDistance("park", "spake");
         Assert.assertEquals(actual, 3);
     }
+
+    @Test
+    public void testLengthOfLastWord() {
+        Assert.assertEquals(solution.lengthOfLastWord("Hello World"), 5);
+        Assert.assertEquals(solution.lengthOfLastWord("Hello World "), 5);
+        Assert.assertEquals(solution.lengthOfLastWord(" "), 0);
+    }
 }
