@@ -27,4 +27,27 @@ public class UniquePathsTest {
         int actual = uniquePaths.uniquePaths(1, 1);
         Assert.assertEquals(actual, 1);
     }
+
+    @Test
+    public void testUniquePathsWithObstacles() {
+        int[][] obstacles = {
+                {0, 0, 0}, {0, 1, 0}, {0, 0, 0}
+        };
+        int actual = uniquePaths.uniquePathsWithObstacles(obstacles);
+        Assert.assertEquals(actual, 2);
+    }
+
+    @Test
+    public void testUniquePathsWithObstacles_Fail1() {
+        int[][] obstacles = {{1, 0}};
+        int actual = uniquePaths.uniquePathsWithObstacles(obstacles);
+        Assert.assertEquals(actual, 0);
+    }
+
+    @Test
+    public void testUniquePathsWithObstacles_AtomicCorner() {
+        int[][] obstacles = {{0}};
+        int actual = uniquePaths.uniquePathsWithObstacles(obstacles);
+        Assert.assertEquals(actual, 1);
+    }
 }

@@ -23,6 +23,34 @@ public class UniquePaths {
         }
         return cache[m - 1][n - 1];  // ```latex C^{m-1}_{m+n-2} ```
     }
+
+    /**
+     * 同上, 但是多了障碍物
+     */
+    @LeetCode(id = 63, problemName = "unique-paths-ii", level = LeetCode.Level.MEDIUM)
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        int[][] cache = new int[m][n];
+        for (int i = 0; i < cache.length; i++) {
+            for (int j = 0; j < cache[i].length; j++) {
+                if (obstacleGrid[i][j] == 1) {
+                    cache[i][j] = 0;
+                    continue;
+                }
+                if (i == 0 && j == 0) {
+                    cache[i][j] = 1;
+                } else if (i == 0) {  // j is positive, i is 0
+                    cache[i][j] = cache[i][j - 1];
+                } else if (j == 0) {  // i is positive, j is 0
+                    cache[i][j] = cache[i - 1][j];
+                } else {  // normal cases
+                    cache[i][j] = cache[i - 1][j] + cache[i][j - 1];
+                }
+            }
+        }
+        return cache[m - 1][n - 1];
+    }
 }
 
 
