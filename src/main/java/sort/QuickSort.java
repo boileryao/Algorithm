@@ -34,7 +34,7 @@ public class QuickSort {
      * @param end   same as above
      *              note that index begins at '0'
      */
-    static int partition(int[] arr, int start, int end) {
+    public static int partition(int[] arr, int start, int end) {
         int head = start - 1;
         for (int i = start; i < end; i++) {
             if (arr[i] <= arr[end]) {
