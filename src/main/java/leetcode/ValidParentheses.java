@@ -1,12 +1,36 @@
 package leetcode;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
  * Created by boileryao on 2019/12/31.
  * Licensed under WTFPL©2019.
  */
-public class LongestValidParentheses {
+public class ValidParentheses {
+    private static final char[] LEFT_PARENTHESES = {'('/*40*/, '['/*91*/, '{'/*123*/};
+    private static final char[] RIGHT_PARENTHESES = {')'/*41*/, ']'/*93*/, '}'/*125*/};
+
+    /**
+     * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+     */
+    @LeetCode(id = 20, problemName = "valid-parentheses", level = LeetCode.Level.EASY)
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char cur = s.charAt(i);
+            int rightIdx = Arrays.binarySearch(RIGHT_PARENTHESES, cur);
+            if (rightIdx >= 0) {
+                if (stack.isEmpty() || stack.pop() != LEFT_PARENTHESES[rightIdx]) {
+                    return false;
+                }
+            } else {
+                stack.push(cur);
+            }
+        }
+        return stack.isEmpty();
+    }
+
     @LeetCode(id = 32, problemName = "longest-valid-parentheses", level = LeetCode.Level.HARD)
     public int longestValidParentheses(String s) {
         Stack<Integer> stack = new Stack<>();
