@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static leetcode.LeetCode.Level.MEDIUM;
 
 /**
@@ -7,6 +11,41 @@ import static leetcode.LeetCode.Level.MEDIUM;
  * Licensed under WTFPL©2019.
  */
 public class Permutations {
+    @LeetCode(id = 46, problemName = "permutations", level = MEDIUM)
+    public List<List<Integer>> permute(int[] nums) {
+        if (nums.length < 1) {
+            return Collections.emptyList();
+        }
+
+        int amount = 1;
+        for (int i = nums.length; i > 1; i--) amount *= i;
+
+        List<List<Integer>> result = new ArrayList<>(amount);
+        result.add(new ArrayList<>(nums.length));
+        result.get(0).add(nums[0]);
+
+        // i = bfs search depth
+        for (int depth = 1; depth < nums.length; depth++) {
+            int size = result.size();
+            // j = results with certain depth
+            for (int i = 0; i < size; i++) {
+                // k = insertion points for new item
+                for (int insertIdx = 0; insertIdx <= depth; insertIdx++) {
+                    if (insertIdx < depth) {
+                        List<Integer> tmp = new ArrayList<>(nums.length);
+                        tmp.addAll(result.get(i));
+                        tmp.add(insertIdx, nums[depth]);
+                        result.add(tmp);
+                    } else {
+                        result.get(i).add(nums[depth]);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
     /**
      * https://zh.wikipedia.org/wiki/全排列生成算法
      *

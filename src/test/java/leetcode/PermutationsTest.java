@@ -3,12 +3,26 @@ package leetcode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 /**
  * Created by boileryao on 9/2/2019.
  * Licensed under WTFPL©2019.
  */
 public class PermutationsTest {
     Permutations solution = new Permutations();
+
+    @Test
+    public void testPermutation() {
+        solution.permute(new int[]{1, 2, 3})
+                .forEach(set -> System.out.println(Arrays.toString(set.toArray())));
+    }
+
+    @Test
+    public void testPermutation_Fail1() {
+        solution.permute(new int[]{5, 4, 6, 2})
+                .forEach(set -> System.out.println(Arrays.toString(set.toArray())));
+    }
 
     @Test
     public void testNextPermutation_01() {
