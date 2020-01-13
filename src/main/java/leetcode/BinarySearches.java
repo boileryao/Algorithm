@@ -76,4 +76,105 @@ public class BinarySearches {
 
         return new int[]{firstIdx, lastIdx};
     }
+
+    @LeetCode(id = 33, problemName = "search-in-rotated-sorted-array", level = MEDIUM)
+    public int binarySearchRotated(int[] nums, int target) {
+        int offset = 0;
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) >> 1;
+            if (mid < nums.length - 1 && nums[mid] > nums[mid + 1]) {
+                offset = mid + 1;
+                break;
+            }
+            if (nums[mid] >= nums[left]) {
+                left = mid + 1;
+            } else if (nums[mid] <= nums[right]) {
+                right = mid - 1;
+            }
+        }
+
+        left = offset;
+        right = offset + nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) >> 1;
+            if (nums[mid % nums.length] == target) {
+                return mid % nums.length;
+            }
+            if (nums[mid % nums.length] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    @SuppressWarnings("unused")
+    public int searchFirst(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] >= value) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        if (low < n && a[low] == value) return low;
+        else return -1;
+    }
+
+    @SuppressWarnings("unused")
+    public int searchLast(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if ((mid == n - 1) || (a[mid + 1] != value)) return mid;
+                else low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    @SuppressWarnings("unused")
+    public int searchFirstGe(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] >= value) {
+                if ((mid == 0) || (a[mid - 1] < value)) return mid;
+                else high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    @SuppressWarnings("unused")
+    public int searchLastLe(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else {
+                if ((mid == n - 1) || (a[mid + 1] > value)) return mid;
+                else low = mid + 1;
+            }
+        }
+        return -1;
+    }
 }

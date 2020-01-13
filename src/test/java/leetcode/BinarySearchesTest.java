@@ -1,6 +1,7 @@
 package leetcode;
 
 import kotlin.collections.CollectionsKt;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -61,5 +62,15 @@ public class BinarySearchesTest {
             int actual = solution.searchInsert(nums, target);
             assertEquals(actual, expect, String.format("Finding %d in %s\n", target, Arrays.toString(nums)));
         }
+    }
+
+    @Test
+    public void testBinarySearchRotated() {
+        Assert.assertEquals(solution.binarySearchRotated(new int[]{3, 1}, 1), 1);
+        Assert.assertEquals(solution.binarySearchRotated(new int[]{3, 1}, 3), 0);
+        Assert.assertEquals(solution.binarySearchRotated(new int[]{1, 3}, 1), 0);
+        Assert.assertEquals(solution.binarySearchRotated(new int[]{1, 3}, 3), 1);
+        Assert.assertEquals(solution.binarySearchRotated(new int[]{4, 5, 6, 7, 0, 1, 2}, 0), 4);
+        Assert.assertEquals(solution.binarySearchRotated(new int[]{4, 5, 6, 7, 0, 1, 2}, 3), -1);
     }
 }
