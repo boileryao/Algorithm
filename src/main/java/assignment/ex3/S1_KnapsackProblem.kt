@@ -13,9 +13,9 @@ internal val vpws = floatArrayOf(2.0f, 1.5f, 2.1f, 1.0f, 1.2f)
 
 fun zeroOneKnapsack(volume: Int, debug: Boolean = false): Int {
     val maxValues = IntArray(volume + 1)
-    val weightDetail = Array<HashSet<Int>>(volume + 1, { HashSet() })
+    val weightDetail = Array<HashSet<Int>>(volume + 1) { HashSet() }
     for (vol in 0 until volume + 1) {
-        for (i in 0 until values.size) {
+        for (i in values.indices) {
             val weight = weights[i]
             val value = values[i]
             if (vol - weight < 0) continue
@@ -44,7 +44,7 @@ fun fractionalKnapsack(volume: Float): Float {
     while (inPack < volume) {
         var maxIdx = 0
         var maxVpw = 0.0f
-        for (i in 0 until values.size) {
+        for (i in values.indices) {
             if (tmpWeights[i] <= 0) continue
             if (vpws[i] > maxVpw) {
                 maxIdx = i

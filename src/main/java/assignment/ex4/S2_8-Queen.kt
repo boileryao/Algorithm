@@ -1,5 +1,7 @@
 package assignment.ex4
 
+import kotlin.math.abs
+
 /**
  * Created by boileryao on 2018/5/13.
  * Licensed under WTFPL©2018.
@@ -8,13 +10,13 @@ package assignment.ex4
  */
 
 fun nQueue(n: Int) {
-    val cols = IntArray(n + 1, { 0 })  // which column should be put for every row
+    val cols = IntArray(n + 1) { 0 }  // which column should be put for every row
     var solutionCount = 0
     fun place(row: Int): Boolean {
         var lineIdx = 1
         while (lineIdx < row) {
             if (cols[lineIdx] == cols[row] ||
-                    Math.abs(cols[lineIdx] - cols[row]) == Math.abs(lineIdx - row)) {
+                    abs(cols[lineIdx] - cols[row]) == abs(lineIdx - row)) {
                 return false
             }
             lineIdx++
@@ -23,11 +25,11 @@ fun nQueue(n: Int) {
     }
 
     fun printSolution() {
-        Array(n, { row ->
-            IntArray(n, { col ->
+        Array(n) { row ->
+            IntArray(n) { col ->
                 if (cols[row + 1] == col + 1) cols[row + 1] else 0
-            })
-        }).forEach { println(it.contentToString()) }
+            }
+        }.forEach { println(it.contentToString()) }
     }
 
     var curRow = 1

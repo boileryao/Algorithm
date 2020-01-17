@@ -3,6 +3,8 @@ package classic;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Random;
+
 /**
  * Created by boileryao on 4/24/2019.
  * Licensed under WTFPL©2019.

@@ -35,6 +35,6 @@ public class NumberSumInString {
     /* numStr: -*\\d+ */
     private static int numberStringToInteger(String numStr) {
         String normalizedNumberStr = numStr.replaceAll("--", "");
-        return Integer.valueOf(normalizedNumberStr);
+        return Integer.parseInt(normalizedNumberStr);
     }
 }

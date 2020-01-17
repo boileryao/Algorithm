@@ -10,7 +10,7 @@ const val INF = Int.MAX_VALUE
 
 fun floyd(matrix: Array<IntArray>) {
     val n = matrix.size
-    val dist: Array<IntArray> = Array(n, { row -> IntArray(n, { col -> matrix[row][col] }) })
+    val dist: Array<IntArray> = Array(n) { row -> IntArray(n) { col -> matrix[row][col] } }
     for (k in 0 until n) {
         for (i in 0 until n) {
             for (j in 0 until n) {
@@ -25,8 +25,8 @@ fun floyd(matrix: Array<IntArray>) {
 
     run {
         println("============最短路径长度============")
-        dist.forEach {
-            println(it.joinToString(separator = ", ") { if (it == INF) "INF" else it.toString() })
+        dist.forEach { row ->
+            println(row.joinToString(separator = ", ") { cell -> if (cell == INF) "INF" else cell.toString() })
         }
     }
 }

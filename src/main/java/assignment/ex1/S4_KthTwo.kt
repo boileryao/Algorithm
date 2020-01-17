@@ -1,5 +1,8 @@
 package assignment.ex1
 
+import kotlin.math.max
+import kotlin.math.min
+
 /**
  * Created by boileryao on 2018/4/30.
  * Licensed under WTFPL©2018.
@@ -69,14 +72,14 @@ fun kthLargest(arrA: IntArray, arrB: IntArray, k: Int): Int {
 
     println("Log(k=$k): $k in [${order - 1}, ${order + 4}]")
     return when (k) {
-        order - 1 -> Math.min(if (ma < 1) Int.MAX_VALUE else arrA[ma - 1], if (mb < 1) Int.MAX_VALUE else arrB[mb - 1])
-        order -> Math.max(if (ma < 1) Int.MIN_VALUE else arrA[ma - 1], if (mb < 1) Int.MIN_VALUE else arrB[mb - 1])
+        order - 1 -> min(if (ma < 1) Int.MAX_VALUE else arrA[ma - 1], if (mb < 1) Int.MAX_VALUE else arrB[mb - 1])
+        order -> max(if (ma < 1) Int.MIN_VALUE else arrA[ma - 1], if (mb < 1) Int.MIN_VALUE else arrB[mb - 1])
 
-        order + 1 -> Math.min(arrA[ma], arrB[mb])
-        order + 2 -> Math.max(arrA[ma], arrB[mb])
+        order + 1 -> min(arrA[ma], arrB[mb])
+        order + 2 -> max(arrA[ma], arrB[mb])
 
-        order + 3 -> Math.min(if (ma + 1 < arrA.size) arrA[ma + 1] else Int.MAX_VALUE, if (mb + 1 < arrB.size) arrB[mb + 1] else Int.MAX_VALUE)
-        order + 4 -> Math.max(if (ma + 1 < arrA.size) arrA[ma + 1] else Int.MIN_VALUE, if (mb + 1 < arrB.size) arrB[mb + 1] else Int.MIN_VALUE)
+        order + 3 -> min(if (ma + 1 < arrA.size) arrA[ma + 1] else Int.MAX_VALUE, if (mb + 1 < arrB.size) arrB[mb + 1] else Int.MAX_VALUE)
+        order + 4 -> max(if (ma + 1 < arrA.size) arrA[ma + 1] else Int.MIN_VALUE, if (mb + 1 < arrB.size) arrB[mb + 1] else Int.MIN_VALUE)
 
         else -> throw IllegalArgumentException("k which is $k is illegal")
     }

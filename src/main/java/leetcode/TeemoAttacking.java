@@ -27,7 +27,7 @@ public class TeemoAttacking {
             int formerAttackTime = timeSeries[i - 1];
             int attackTime = timeSeries[i];
             int gap = attackTime - formerAttackTime;
-            poisonTime += (gap >= duration ? duration : gap);
+            poisonTime += Math.min(gap, duration);
         }
 
         return poisonTime + duration;  // calc last poison

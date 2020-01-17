@@ -11,7 +11,6 @@ import kotlin.test.assertEquals
  * @see { https://blog.csdn.net/wzq153308/article/details/46366833 }
  */
 
-
 internal var capacity = 100
 internal var values = intArrayOf(65, 20, 30, 60, 40)
 internal var weights = doubleArrayOf(30.0, 10.0, 20.0, 50.0, 40.0)
@@ -29,7 +28,7 @@ fun backTrack(depth: Int) {
     if (depth >= values.size) {
         if (tmpValue > maxValue) {
             maxValue = tmpValue
-            for (i in 0 until values.size)
+            for (i in values.indices)
                 bestWay[i] = tmpWay[i]
         }
         return
@@ -56,6 +55,7 @@ fun backTrack(depth: Int) {
 /**
  * 计算剩余物品的最高价值上界, 模拟fractional背包
  */
+@Suppress("unused")
 fun bound(k: Int): Double {
     var depth = k
     var maxLeft = tmpValue.toDouble()
@@ -76,7 +76,7 @@ fun bound(k: Int): Double {
 fun main() {
     // sort `value and weight`
     assertEquals(values.size, weights.size)
-    val tmpArray = Array(values.size, { idx -> Triple(values[idx], weights[idx], values[idx] / weights[idx]) })
+    val tmpArray = Array(values.size) { idx -> Triple(values[idx], weights[idx], values[idx] / weights[idx]) }
     tmpArray.sortedWith(Comparator { o1, o2 -> ((o2.third - o1.third) * Integer.MAX_VALUE).toInt() })
             .withIndex()
             .forEach { values[it.index] = it.value.first; weights[it.index] = it.value.second }

@@ -1,6 +1,7 @@
 package assignment.ex2
 
 import java.util.*
+import kotlin.math.max
 
 
 /**
@@ -22,7 +23,7 @@ fun lcsA(s1: String, s2: String): List<Char> {
             if (s1[i - 1] == s2[j - 1])
                 num[i][j] = 1 + num[i - 1][j - 1]
             else
-                num[i][j] = Math.max(num[i - 1][j], num[i][j - 1])
+                num[i][j] = max(num[i - 1][j], num[i][j - 1])
 
     println("length of LCS = " + num[s1.length][s2.length])
 

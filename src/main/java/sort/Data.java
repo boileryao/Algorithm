@@ -4,6 +4,7 @@ package sort;
  * Created by boiler-yao on 2016/10/19.
  * Data for sort
  */
+@SuppressWarnings("unused")
 public class Data {
     static int[] arr1 = new int[]{1, 2, 4, 7, 9};
     static int[] arr2 = new int[]{9, 8, 7, 6, 5, 4};

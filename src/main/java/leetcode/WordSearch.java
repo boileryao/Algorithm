@@ -183,7 +183,7 @@ public class WordSearch {
         throw new Error();
     }
 
-    private class Position {
+    private static class Position {
         int row, col;
 
         Position(int row, int col) {

@@ -7,7 +7,7 @@ package assignment.ex2
  * May you a better man and do no evil.
  */
 
-val Z = Integer.MAX_VALUE  /* infinite */
+const val Z = Integer.MAX_VALUE  /* infinite */
 internal val graph = arrayOf(
         //                0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F
         /* 0 */intArrayOf(0, 5, 3, Z, Z, Z, Z, Z, Z, Z, Z, Z, Z, Z, Z, Z),
@@ -54,7 +54,7 @@ fun dijkstra() {
     while (setQ.isNotEmpty()) {
         val curMinVertex = extractMin()
         setS.add(curMinVertex)
-        for (i in 0 until graph[curMinVertex].size) {
+        for (i in graph[curMinVertex].indices) {
             val len = graph[curMinVertex][i]
             if (len != 0 && len != Z && d[i] > d[curMinVertex] + len) {
                 d[i] = d[curMinVertex] + len
@@ -78,7 +78,7 @@ fun dijkstra() {
 }
 
 fun bellmanFord(graph: Array<IntArray>) {
-    val dists = IntArray(graph.size, { idx -> if (idx == 0) 0 else Z })
+    val dists = IntArray(graph.size) { idx -> if (idx == 0) 0 else Z }
     val preNodes = IntArray(graph.size)
     for (i in 0..graph.lastIndex) {
         for (j in 0..graph[i].lastIndex) {
