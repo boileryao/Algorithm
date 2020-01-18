@@ -1,4 +1,4 @@
-package classic;
+package classic.producerconsumer;
 
 /**
  * Created by boileryao on 2018/10/19.
@@ -6,7 +6,7 @@ package classic;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-public class ProducerConsumer {
+public class WaitNotifySolution {
 
     private static final Object LOCK = new Object();
     private static final int MAX = 3;
