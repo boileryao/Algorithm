@@ -19,6 +19,8 @@ public @interface LeetCode {
 
     String problemName();
 
+    String tag() default "[]";
+
     boolean accepted() default true;
 
     Level level() default Level.UNDEFINED;
