@@ -5,6 +5,24 @@ package leetcode;
  * Licensed under WTFPL©2019.
  */
 public class StringOperations {
+    @LeetCode(id = 5, problemName = "longest-palindromic-substring", level = LeetCode.Level.MEDIUM)
+    public String longestPalindrome(String s) {
+        if (s.length() <= 1) return s;
+        int start = 0, end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            int evenSeq = expandAroundCenter(s, i, i);
+            int oddSeq = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(evenSeq, oddSeq);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+
+        return s.substring(start, end + 1);
+    }
+
     @LeetCode(id = 14, problemName = "longest-common-prefix", level = LeetCode.Level.EASY)
     public String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) return "";
@@ -60,5 +78,14 @@ public class StringOperations {
             }
         }
         return word1.length() + word2.length() - 2 * lcs;
+    }
+
+    private int expandAroundCenter(String s, final int left, final int right) {
+        int leftCursor = left, rightCursor = right;
+        while (leftCursor >= 0 && rightCursor < s.length() && s.charAt(leftCursor) == s.charAt(rightCursor)) {
+            leftCursor--;
+            rightCursor++;
+        }
+        return rightCursor - leftCursor - 1;
     }
 }

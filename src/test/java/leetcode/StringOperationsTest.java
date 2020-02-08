@@ -3,6 +3,9 @@ package leetcode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by boileryao on 2019/9/29.
  * Licensed under WTFPL©2019.
@@ -69,5 +72,31 @@ public class StringOperationsTest {
         Assert.assertEquals(solution.lengthOfLastWord("Hello World"), 5);
         Assert.assertEquals(solution.lengthOfLastWord("Hello World "), 5);
         Assert.assertEquals(solution.lengthOfLastWord(" "), 0);
+    }
+
+    @Test
+    public void testLongestPalindrome_Case1() {
+        List<String> acceptable = Arrays.asList("bab", "aba");
+        String actual = solution.longestPalindrome("babad");
+        Assert.assertTrue(acceptable.contains(actual));
+    }
+
+    @Test
+    public void testLongestPalindrome_Case2() {
+        String actual = solution.longestPalindrome("cbbd");
+        Assert.assertEquals(actual, "bb");
+    }
+
+    @Test
+    public void testLongestPalindrome_2020() {
+        String ops = "20200202";
+        String actual = solution.longestPalindrome(ops);
+        Assert.assertEquals(actual, ops);
+    }
+
+    @Test
+    public void testLongestPalindrome_Fail1() {
+        String actual = solution.longestPalindrome("banananas");
+        Assert.assertEquals(actual, "ananana");
     }
 }
