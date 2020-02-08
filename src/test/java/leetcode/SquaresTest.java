@@ -69,4 +69,31 @@ public class SquaresTest {
         int actual = squares.countSquares(matrix);
         Assert.assertEquals(actual, 19);
     }
+
+    @Test
+    public void testValidSquare() {
+        Assert.assertTrue(squares.validSquare(new int[]{0, 0}, new int[]{1, 1}, new int[]{1, 0}, new int[]{0, 1}));
+    }
+
+    @Test
+    public void testValidSquare_Zero() {
+        int[] zero = {0, 0};
+        Assert.assertFalse(squares.validSquare(zero, zero, zero, zero));
+    }
+
+    @Test
+    public void testValidSquare_Fail1() {
+        Assert.assertTrue(squares.validSquare(
+                new int[]{6987, -473}, new int[]{6985, -473},
+                new int[]{6986, -472}, new int[]{6986, -474})
+        );
+    }
+
+    @Test
+    public void testValidSquare_Fail2() {
+        Assert.assertFalse(squares.validSquare(
+                new int[]{0, 1}, new int[]{0, 0},
+                new int[]{1, 2}, new int[]{0, 2})
+        );
+    }
 }
