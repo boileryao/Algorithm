@@ -8,6 +8,34 @@ import static leetcode.LeetCode.Level.MEDIUM;
  */
 public class Squares {
     /**
+     * 在一个由 0 和 1 组成的二维矩阵内，找到只包含 1 的最大正方形，并返回其面积。
+     */
+    @LeetCode(id = 221, problemName = "maximal-square", level = MEDIUM)
+    public int maximalSquare(char[][] matrix) {
+        int maxSquareSize = 0;
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                if (matrix[row][col] == '1') {
+                    int squareSize = 1;
+                    offset:
+                    for (int offset = 1; offset < matrix.length - row; offset++) {
+                        for (int i = 0; i <= offset && col + offset < matrix[row].length; i++) {
+                            if (matrix[row + offset][col + i] == '0' || matrix[row + i][col + offset] == '0') {
+                                break offset;
+                            }
+                            if (i == offset) {
+                                ++squareSize;
+                            }
+                        }
+                    }
+                    maxSquareSize = Math.max(maxSquareSize, squareSize);
+                }
+            }
+        }
+        return maxSquareSize * maxSquareSize;
+    }
+
+    /**
      * 给定一个 m * n 的矩阵，矩阵中的元素不是 0 就是 1，统计并返回其中完全由 1 组成的 正方形 子矩阵的个数。
      */
     @LeetCode(id = 1277, problemName = "count-square-submatrices-with-all-ones", level = MEDIUM)
@@ -22,7 +50,6 @@ public class Squares {
                         for (int i = 0; i <= offset && col + offset < matrix[row].length; i++) {
                             if (matrix[row + offset][col + i] == 0 || matrix[row + i][col + offset] == 0) break offset;
                             if (i == offset) {
-                                if (matrix[row + offset][col + offset] == 0) break offset;
                                 squares++;
                             }
                         }

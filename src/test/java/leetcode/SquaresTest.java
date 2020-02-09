@@ -17,8 +17,7 @@ public class SquaresTest {
                 {1, 1, 1, 1},
                 {0, 1, 1, 1}
         };
-        int actual = squares.countSquares(matrix);
-        Assert.assertEquals(actual, 15);
+        testSquares(matrix, 15, 9);
     }
 
     @Test
@@ -28,8 +27,7 @@ public class SquaresTest {
                 {1, 1, 0},
                 {1, 1, 0},
         };
-        int actual = squares.countSquares(matrix);
-        Assert.assertEquals(actual, 7);
+        testSquares(matrix, 7, 4);
     }
 
     @Test
@@ -41,8 +39,7 @@ public class SquaresTest {
                 {1, 1, 1},
                 {1, 1, 0}
         };
-        int actual = squares.countSquares(matrix);
-        Assert.assertEquals(actual, 8);
+        testSquares(matrix, 8, 4);
     }
 
     @Test
@@ -53,8 +50,7 @@ public class SquaresTest {
                 {1, 1, 1, 1},
                 {1, 0, 1, 0}
         };
-        int actual = squares.countSquares(matrix);
-        Assert.assertEquals(actual, 13);
+        testSquares(matrix, 13, 4);
     }
 
     @Test
@@ -66,8 +62,7 @@ public class SquaresTest {
                 {1, 0, 1, 0, 1},
                 {0, 0, 1, 0, 1}
         };
-        int actual = squares.countSquares(matrix);
-        Assert.assertEquals(actual, 19);
+        testSquares(matrix, 19, 4);
     }
 
     @Test
@@ -95,5 +90,16 @@ public class SquaresTest {
                 new int[]{0, 1}, new int[]{0, 0},
                 new int[]{1, 2}, new int[]{0, 2})
         );
+    }
+
+    private void testSquares(int[][] matrix, int countExpect, int maxSquareExpect) {
+        Assert.assertEquals(squares.countSquares(matrix), countExpect, "Count squares,");
+        char[][] charMatrix = new char[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                charMatrix[i][j] = (char) (matrix[i][j] + '0');
+            }
+        }
+        Assert.assertEquals(squares.maximalSquare(charMatrix), maxSquareExpect, "Maximal squares,");
     }
 }
