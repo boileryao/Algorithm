@@ -12,6 +12,39 @@ import static leetcode.LeetCode.Level.*;
  */
 public class LinkedListOperations {
     /**
+     * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
+     */
+    @LeetCode(id = 61, problemName = "rotate-list", level = MEDIUM)
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null) return head;
+
+        // calc list size
+        int listSize = 1;
+        ListNode tailNode = head;
+        while (tailNode.next != null) {
+            tailNode = tailNode.next;
+            listSize++;
+        }
+
+        // rotate
+        int remainingMoves = k % listSize;
+        remainingMoves = (listSize - remainingMoves) % listSize;
+        ListNode newHead = head;
+        ListNode firstHalfTail = null;
+        while (remainingMoves-- > 0) {
+            firstHalfTail = newHead;
+            newHead = newHead.next == null ? head : newHead.next;
+        }
+
+        // concat
+        if (firstHalfTail != null) {
+            tailNode.next = head;
+            firstHalfTail.next = null;
+        }
+        return newHead;
+    }
+
+    /**
      * Iterate ex2 lists (just like somewhat a ring) parallel respectively
      * Two cases:
      * 1. List A and B has no interactions:

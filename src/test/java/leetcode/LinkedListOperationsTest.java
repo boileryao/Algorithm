@@ -108,4 +108,18 @@ public class LinkedListOperationsTest {
         });
         assertEquals(actual, ListNode.asList(1, 1, 2, 3, 4, 4, 5, 6));
     }
+
+    @Test
+    public void testRotateRight() {
+        ListNode actual = mListOperations.rotateRight(ListNode.asList(0, 1, 2), 4);
+        assertEquals(actual.val, 2);
+        assertEquals(actual.next.val, 0);
+    }
+
+    @Test
+    public void testRotateRight_Fail1() {
+        ListNode actual = mListOperations.rotateRight(ListNode.asList(1, 2), 0);
+        assertEquals(actual.val, 1);
+        assertEquals(actual.next.val, 2);
+    }
 }
