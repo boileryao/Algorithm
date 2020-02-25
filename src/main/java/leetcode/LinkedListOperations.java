@@ -11,6 +11,18 @@ import static leetcode.LeetCode.Level.*;
  * May you a better man and do no evil.
  */
 public class LinkedListOperations {
+    @LeetCode(id = 141, problemName = "linked-list-cycle", level = EASY)
+    public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        do {
+            if (fast == null || fast.next == null) return false;
+            fast = fast.next.next;
+            slow = slow.next;
+        } while (fast != slow);
+        return true;
+    }
+
     /**
      * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
      */

@@ -3,8 +3,7 @@ package leetcode;
 import model.ListNode;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNull;
+import static org.testng.Assert.*;
 
 /**
  * Created by boileryao on 2018/3/20.
@@ -121,5 +120,12 @@ public class LinkedListOperationsTest {
         ListNode actual = mListOperations.rotateRight(ListNode.asList(1, 2), 0);
         assertEquals(actual.val, 1);
         assertEquals(actual.next.val, 2);
+    }
+
+    @Test
+    public void testHasCycle() {
+        ListNode list = ListNode.asList(3, 2, 0, -4);
+        list.next.next.next.next = list.next;
+        assertTrue(mListOperations.hasCycle(list));
     }
 }
