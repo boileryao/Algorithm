@@ -29,7 +29,7 @@ public class ThreeSum {
         List<List<Integer>> res = new LinkedList<>();
         for (int i = 0; i < nums.length - 2; i++) {
             if (i == 0 || nums[i] != nums[i - 1]) {
-                int lo = i + 1, hi = nums.length - 1, sum = 0 - nums[i];
+                int lo = i + 1, hi = nums.length - 1, sum = -nums[i];
                 while (lo < hi) {
                     if (nums[lo] + nums[hi] == sum) {
                         res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
@@ -50,6 +50,43 @@ public class ThreeSum {
             }
         }
         return res;
+    }
+
+    @LeetCode(id = 16, problemName = "3sum-closest", level = LeetCode.Level.MEDIUM)
+    public int threeSumClosest(int[] nums, final int target) {
+        if (nums.length < 3) {
+            throw new IllegalArgumentException();
+        }
+
+        Arrays.sort(nums);
+
+        int closest = nums[0] + nums[1] + nums[2];
+        for (int i = 0; i < nums.length - 1; i++) {
+            int start = i + 1;
+            int end = nums.length - 1;
+
+            while (start < end) {
+                int targetTwoSum = target - nums[i];
+                int thisSum = nums[start] + nums[end] + nums[i];
+                int thisSumDiff = thisSum - target;
+                if (Math.abs(thisSumDiff) < Math.abs(closest - target)) {
+                    closest = thisSum;
+                    // target match
+                    if (thisSum == target) {
+                        return target;
+                    }
+                }
+
+                // shrink
+                if (nums[start] + nums[end] < targetTwoSum) {
+                    start++;
+                } else {
+                    end--;
+                }
+            }
+        }
+
+        return closest;
     }
 
     // this function may work, and time complex is O(n*n*lgn), limitation is objects, exciting
