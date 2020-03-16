@@ -1,4 +1,4 @@
-package fuckoffer;
+package lcof;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
