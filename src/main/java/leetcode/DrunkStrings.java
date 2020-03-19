@@ -53,6 +53,25 @@ public class DrunkStrings {
         return knowledge;
     }
 
+    @LeetCode(id = 409, problemName = "longest-palindrome", level = LeetCode.Level.EASY)
+    public int longestPalindrome(String s) {
+        int[] charCounts = new int[52];
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int idx = ch - (Character.isLowerCase(ch) ? 'a' : 'A' - 26);
+            charCounts[idx]++;
+        }
+
+        int evenCountSum = 0;
+        boolean hasOddCount = false;
+        for (int count : charCounts) {
+            evenCountSum += count & 0xFFFFFFFE;
+            if (count % 2 != 0) hasOddCount = true;
+        }
+
+        return evenCountSum + (hasOddCount ? 1 : 0);
+    }
+
     private String remaining(String a, String b) {
         String remaining = a.replaceFirst(String.format("(%s)+", b), "");
         if (b.startsWith(remaining)) {
