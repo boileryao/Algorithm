@@ -2,8 +2,7 @@ package leetcode;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 /**
  * Created by boileryao on 2020/3/11.
@@ -30,5 +29,15 @@ public class DrunkArraysTest {
     @Test
     public void testCanThreePartsEqualSum_Fail1() {
         assertTrue(drunkArrays.canThreePartsEqualSum(new int[]{10, -10, 10, -10, 10, -10, 10, -10}));
+    }
+
+    @Test
+    public void testMinIncrementForUnique_Case1() {
+        assertEquals(drunkArrays.minIncrementForUnique(new int[]{1, 2, 2}), 1);
+    }
+
+    @Test
+    public void testMinIncrementForUnique_Case2() {
+        assertEquals(drunkArrays.minIncrementForUnique(new int[]{3, 2, 1, 2, 1, 7}), 6);
     }
 }
