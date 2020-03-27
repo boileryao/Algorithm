@@ -2,6 +2,7 @@ package leetcode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.TreeMap;
 
 /**
  * Created by boileryao on 2018/2/14.
@@ -9,36 +10,9 @@ import java.util.Deque;
  * May you have a good life, may you stand on the firm earth.
  * May you a better man and do no evil.
  */
-@SuppressWarnings("unused")
 public class SlidingWindowMaximum {
-    @LeetCode(id = 239, problemName = "sliding-window-maximum", level = LeetCode.Level.HARD)
-    private static int[] maxSlidingWindow(int[] nums, int k) {
-        int[] msw = new int[nums.length - k + 1];  // max sliding window
-
-        int max = 0; // first window
-        for (int i = 0; i < k; i++) {
-            if (nums[i] > max) max = nums[i];
-        }
-        Deque<Integer> deque = new ArrayDeque<>();
-
-        if (msw.length > 0) msw[0] = max;
-
-        for (int i = 1; i < msw.length; i++) {
-            int a = nums[i - 1];
-            int b = nums[i + k - 1];
-            int delta = -a + b;
-            System.out.format("a:%d b:%d delta:%d\n", a, b, delta);
-
-            max += delta;
-            msw[i] = max;
-        }
-
-
-        return msw;
-    }
-
-    @LeetCode(id = 239, problemName = "sliding-window-maximum", level = LeetCode.Level.HARD)
-    private static int[] benchMark(final int[] nums, final int k) {
+    @LeetCode(id = 239, problemName = "sliding-window-maximum", tag = "[DP]", level = LeetCode.Level.HARD)
+    public int[] benchMark_ON(final int[] nums, final int k) {
         if (nums == null || nums.length == 0 || k > nums.length) return new int[0];
         int[] maxLeft = new int[nums.length];
         int[] maxRight = new int[nums.length];
@@ -60,27 +34,49 @@ public class SlidingWindowMaximum {
         return slidingMax;
     }
 
-    private static int[] slidingWindows(int[] nums, int k) {
-        int[] msw = new int[nums.length - k + 1];  // max sliding window
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int[] msw = new int[nums.length - k + 1];
+        Deque<Integer> maxIdxes = new ArrayDeque<>();
 
-        int fw = 0; // first window
-        for (int i = 0; i < k; i++) {
-            fw += nums[i];
+        for (int i = 0; i < nums.length; i++) {
+            if (!maxIdxes.isEmpty() && maxIdxes.getFirst() == (i - k)) {
+                maxIdxes.removeFirst();
+            }
+            while (!maxIdxes.isEmpty() && maxIdxes.getLast() <= nums[i]) {
+                maxIdxes.removeLast();
+            }
+            maxIdxes.add(nums[i]);
+
+            if (i < k) {
+                if (nums[i] > msw[0]) msw[0] = nums[i];
+            } else {
+                msw[i - k + 1] = maxIdxes.getFirst();
+            }
         }
-
-        if (msw.length > 0) msw[0] = fw;
-
-        for (int i = 1; i < msw.length; i++) {
-            int a = nums[i - 1];
-            int b = nums[i + k - 1];
-            int delta = -a + b;
-            System.out.format("a:%d b:%d delta:%d\n", a, b, delta);
-
-            fw += delta;
-            msw[i] = fw;
-        }
-
 
         return msw;
+    }
+
+    public int[] maxSlidingWindow_ONLGN_TreeMap(int[] nums, int k) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        int[] result = new int[nums.length - k + 1];
+        for (int i = 0; i < k; i++) {
+            map.put(nums[i], 1);
+        }
+        result[0] = map.lastKey();
+
+        for (int i = 1; i < result.length; i++) {
+            int slideOut = nums[i - 1];
+            int slideOutCount = map.get(slideOut);
+            if (slideOutCount == 1) {
+                map.remove(slideOut);
+            } else {
+                map.put(slideOut, slideOutCount - 1);
+            }
+            int slideIn = nums[k + i - 1];
+            map.put(slideIn, map.getOrDefault(slideIn, 0) + 1);
+            result[i] = map.lastKey();
+        }
+        return result;
     }
 }
