@@ -2,10 +2,7 @@ package leetcode;
 
 import model.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 import static leetcode.LeetCode.Level.EASY;
 import static leetcode.LeetCode.Level.MEDIUM;
@@ -17,11 +14,28 @@ import static leetcode.LeetCode.Level.MEDIUM;
 @SuppressWarnings("unused")
 public class TreeOperations {
     @LeetCode(id = 94, problemName = "binary-tree-inorder-traversal", level = MEDIUM)
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> inOrderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         midOrderIterate(result, root);
         return result;
     }
+
+    public List<Integer> wfsTraversal(TreeNode root) {
+        List<Integer> nodes = new LinkedList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+
+        queue.add(root);
+
+        while (queue.size() > 0) {
+            TreeNode head = queue.remove();
+            nodes.add(head.val);
+            if (head.left != null) queue.add(head.left);
+            if (head.right != null) queue.add(head.right);
+        }
+
+        return nodes;
+    }
+
 
     @LeetCode(id = 226, problemName = "invert-binary-tree", level = EASY)
     public TreeNode invertTree(TreeNode root) {
